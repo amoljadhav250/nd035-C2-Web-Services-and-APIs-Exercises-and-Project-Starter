@@ -20,7 +20,6 @@ import org.springframework.web.reactive.function.client.WebClient;
  */
 @SpringBootApplication
 @EnableJpaAuditing
-@EnableEurekaClient
 public class VehiclesApiApplication {
 
     public static void main(String[] args) {
@@ -64,7 +63,6 @@ public class VehiclesApiApplication {
      * @return created pricing endpoint
      */
     @Bean(name="pricing")
-    @LoadBalanced
     public WebClient webClientPricing(@Value("${pricing.endpoint}") String endpoint) {
         return WebClient.create(endpoint);
     }
