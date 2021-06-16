@@ -1,7 +1,9 @@
 package com.udacity.pricing;
 
 import com.udacity.pricing.domain.price.Price;
+import com.udacity.pricing.service.PriceException;
 import net.bytebuddy.asm.Advice;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,16 @@ public class PricingServiceApplicationTests {
 
 	@Test
 	public void generatePrice(){
-		ResponseEntity<Price> response = this.restTemplate.getForEntity("http://localhost:"+port+"/services/price?vehicleId=1", Price.class);
+		ResponseEntity<Price> response = this.restTemplate.getForEntity("http://localhost:"+port+"/services/price?vehicleId=19", Price.class);
 		assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
 	}
+
+	@Test
+	public void generatePriceException(){
+		ResponseEntity<Price> response = this.restTemplate.getForEntity("http://localhost:"+port+"/services/price?vehicleId=20", Price.class);
+		assertThat(response.getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
+	}
+
+
 
 }

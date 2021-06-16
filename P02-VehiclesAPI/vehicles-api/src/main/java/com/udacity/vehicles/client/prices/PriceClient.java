@@ -2,6 +2,7 @@ package com.udacity.vehicles.client.prices;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
